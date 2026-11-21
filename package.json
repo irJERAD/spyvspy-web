@@ -1,0 +1,10 @@
+{
+  "name": "spy-vs-spy-corridor",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Spy vs Spy — The Corridor: a hidden-information duel in five rooms.",
+  "scripts": {
+    "start": "npx serve .",
+    "dev": "npx serve ."
+  }
+}

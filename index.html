@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Spy vs Spy — The Corridor</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E🕵️%3C/text%3E%3C/svg%3E">
+<meta name="description" content="A hidden-information duel in five rooms. Move, hide, blade, or pistol — bluff your way to the file.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Lora:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<div class="wrap">
+
+  <header class="masthead">
+    <div class="eyebrow">Spy vs Spy · The Corridor</div>
+    <div class="subeyebrow">A hidden-information duel · five rooms · one file</div>
+  </header>
+
+  <h1 class="title">Two spies,<br>five rooms.</h1>
+
+  <div class="card board-card">
+
+    <div class="status-band">
+      <div class="status-cell">
+        <div class="status-label">You — Spy in White</div>
+        <div class="status-figure">
+          <span id="youHp" class="tnum figure">10</span>
+          <span class="figure-unit">wounds left</span>
+        </div>
+        <div class="bar"><div id="youBar" class="bar-fill"></div></div>
+        <div id="youStatus" class="status-line">In the open, room I</div>
+        <div id="youAmmo" class="ammo-line tnum">Pistol rounds in hand: 3</div>
+      </div>
+
+      <div class="status-cell status-cell-round">
+        <div class="round-label">Round</div>
+        <div id="round" class="tnum round-figure">1</div>
+        <div class="round-of">of 20</div>
+      </div>
+
+      <div class="status-cell status-cell-right">
+        <div class="status-label">House — Spy in Black</div>
+        <div class="status-figure status-figure-right">
+          <span class="figure-unit">wounds you have dealt</span>
+          <span id="dealt" class="tnum figure">0</span>
+        </div>
+        <div class="bar bar-hatched"></div>
+        <div id="foeStatus" class="status-line">Somewhere out of sight</div>
+        <div class="ammo-line tnum">His rounds in hand: unknown</div>
+      </div>
+    </div>
+
+    <div class="board-panel">
+      <div id="rooms" class="rooms"></div>
+      <div id="prompt" class="prompt"></div>
+    </div>
+
+    <div class="actions" id="actions"></div>
+
+    <div class="lower">
+      <div class="dispatches">
+        <div class="section-label">Dispatches</div>
+        <div id="log" class="log"></div>
+      </div>
+      <div class="odds">
+        <div class="section-label">Chance to hit</div>
+        <table class="table odds-table">
+          <thead>
+            <tr><th style="text-align:left">Rooms apart</th><th style="text-align:right">Blade</th><th style="text-align:right">Pistol</th></tr>
+          </thead>
+          <tbody>
+            <tr><td class="tnum">0 — same room</td><td class="tnum" style="text-align:right">85%</td><td class="tnum" style="text-align:right">95%</td></tr>
+            <tr><td class="tnum">1</td><td class="tnum" style="text-align:right">55%</td><td class="tnum" style="text-align:right">88%</td></tr>
+            <tr><td class="tnum">2</td><td class="tnum" style="text-align:right">—</td><td class="tnum" style="text-align:right">74%</td></tr>
+            <tr><td class="tnum">3</td><td class="tnum" style="text-align:right">—</td><td class="tnum" style="text-align:right">58%</td></tr>
+            <tr><td class="tnum">4</td><td class="tnum" style="text-align:right">—</td><td class="tnum" style="text-align:right">42%</td></tr>
+          </tbody>
+        </table>
+        <div class="odds-note">Every roll carries ±8 points of luck. Naming the wrong room is an automatic miss, however close you were. The pistol is aimed a round in advance, so a spy who moves after you declare is a spy you cannot hit.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="rules-grid">
+    <div class="rule-col">
+      <div class="section-label">Blade — the sneak</div>
+      <div class="rule-text">Two wounds. Reaches one room. A hit puts you straight back into the shadows; a miss leaves you standing in the open for a round. The move that rewards patience.</div>
+    </div>
+    <div class="rule-col rule-col-mid">
+      <div class="section-label">Pistol — the loud one</div>
+      <div class="rule-text">Five wounds, four rooms of reach, and it fires a full round after you declare it. You carry three rounds and reload one each round you spend hidden. You are visible the whole time and cannot hide. You are betting they stay put.</div>
+    </div>
+    <div class="rule-col rule-col-mid" style="border-left:none">
+      <div class="section-label">Trap — the tripwire</div>
+      <div class="rule-text">Spend a round stringing a wire across your room. If he ends any round standing there, it springs: three wounds, and he is seen. You keep one trap at a time; setting another moves it. He cannot see yours, and you cannot see his unless you Listen close enough.</div>
+    </div>
+    <div class="rule-col">
+      <div class="section-label">Listen — the tell</div>
+      <div class="rule-text">Spends your round to learn where a hidden spy is standing, within two rooms, and whether a pistol is being levelled at you. Information as a weapon.</div>
+    </div>
+  </div>
+
+  <footer class="foot">Built from the Corridor design spec — see the design doc for balance rationale and alternate variants.</footer>
+
+</div>
+
+<script src="app.js"></script>
+</body>
+</html>
